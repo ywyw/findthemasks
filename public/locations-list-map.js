@@ -382,7 +382,7 @@ function initMap(stateFilter) {
   map = new google.maps.Map(element);
   markerCluster = new MarkerClusterer(map, [],
     { imagePath: 'images/markercluster/m' });
-  
+
   showMarkers(data_by_location, { states: stateFilter }, !stateFilter);
 
   // Necessary for resetMap() so that showMarkers() can be called again to reset initial state when user clicks link.
@@ -621,7 +621,7 @@ function showMarkers(data, filters, showNearest) {
       }
     }
   }
-  
+
   markerCluster.addMarkers(markers)
 
   let $mapStats = $('#map-stats');
@@ -635,16 +635,15 @@ function showMarkers(data, filters, showNearest) {
 }
 window.showMarkers = showMarkers; // Exposed for debug/testing.
 
-
-
-// TODO (patricknelson): Some of this is duplicated in centerMapToMarkersNearCoords(). Need issue/PR to discuss how to de-duplicate.
+// Source of center lat/lng values per country:
+// https://developers.google.com/public-data/docs/canonical/countries_csv
 const MAP_INITIAL_VIEW = {
-  ca: { zoom: 4, center:{ lat: 60.2610785, lng: -115.115869 }},
-  ch: { zoom: 8, center:{ lat: 46.8095944, lng: 7.1030945 }},
-  de: { zoom: 6, center:{ lat: 51.0967925, lng: 5.9672423 }},
-  gb: { zoom: 6, center:{ lat: 54.4932404, lng: -8.5494117 }},
-  fr: { zoom: 6, center:{ lat: 46.138959, lng: -2.4370921 }},
-  us: { zoom: 4, center:{ lat: 39.0567939, lng: -94.6065124 }},
+  ca: { zoom: 4, center:{ lat: 56.130366, lng: -106.346771 }},
+  ch: { zoom: 7, center:{ lat: 46.818188, lng: 8.227512 }},
+  de: { zoom: 6, center:{ lat: 51.165691, lng: 10.451526 }},
+  fr: { zoom: 5, center:{ lat: 46.227638, lng: 2.213749 }},
+  gb: { zoom: 6, center:{ lat: 55.378051, lng: -3.435973 }},
+  us: { zoom: 4, center:{ lat: 37.09024, lng: -95.712891 }},
 };
 
 function centerMapToBounds(map, bounds, maxZoom) {
